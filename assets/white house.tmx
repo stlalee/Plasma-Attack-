@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="5">
+ <tileset firstgid="1" name="marble" tilewidth="60" tileheight="60">
+  <image source="marble.png" width="60" height="60"/>
+ </tileset>
+ <tileset firstgid="2" name="r car" tilewidth="60" tileheight="60">
+  <image source="red carpet.png" width="180" height="180"/>
+ </tileset>
+ <tileset firstgid="11" name="thing" tilewidth="60" tileheight="60">
+  <image source="bench.png" width="240" height="120"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYBzFo5jKGACzTACX
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAfMAExMxmYBYhZgZiNDMw+qpckvRxAzEkG5mKgDAAACFEC0Q==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAAHiDmZRhcgBZu4qZALz/VXMHAIADEglQ0bzABAKMQAG4=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="1" x="193" y="12" width="95" height="47"/>
+  <object id="2" x="613" y="132" width="95" height="47"/>
+  <object id="3" x="72" y="253" width="48" height="93"/>
+  <object id="4" x="313" y="361" width="96" height="46"/>
+ </objectgroup>
+</map>
