@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="52">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="65">
  <tileset firstgid="1" name="rooms" tilewidth="60" tileheight="60">
   <image source="level 1.png" width="900" height="600"/>
  </tileset>
- <layer name="Tile Layer 1" width="15" height="10">
+ <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
    eJwNwwc3FgAAAMCPjKzISkK2kqxCRokyMxMyUqREGZWQoiI7VOT3dvfeBQUCgWDPGWKoYYZ73ggjjTLaGC8Ya5wXjTfBRJNM9pIpXjbVK6aZboZXzTTLbHPMNc98C7zmdQu9YZE3LbbEUsss95a3rbDSKu9YbY211nnXe9Z73wYbfeBDm2y2xVbbbPeRHXbaZbc99vrYPp/Y74CDPnXIYUcc9ZljPveF40740klf+dop3zjtjG9956xzzrvgez/40UU/ueSyK3521S9+dc11v/ndH2646U+33HbHXffc98BfHnrksb/9419PPPWfZ/4HCgUsPg==
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
-  <object id="13" x="360" y="0" width="7.33333" height="128"/>
-  <object id="14" x="296.333" y="120" width="71" height="8"/>
-  <object id="17" x="296" y="121" width="7.66667" height="186.667"/>
-  <object id="21" x="255.333" y="299.667" width="48.3333" height="8.33333"/>
+ <objectgroup name="collisions">
   <object id="24" x="0" y="300" width="149.667" height="8"/>
   <object id="25" x="532.333" y="531" width="7.66667" height="72.6667"/>
   <object id="27" x="532.333" y="411.667" width="7" height="34"/>
@@ -32,5 +28,14 @@
   <object id="49" x="612" y="368.667" width="55.3333" height="35.3333"/>
   <object id="50" x="745.333" y="510" width="32.6667" height="32.6667"/>
   <object id="51" x="-44" y="45"/>
+  <object id="64" x="255.5" y="306.5">
+   <polyline points="0,0 48.5,0 47,-179.5 112,-179.5 112,-306.5 105.5,-306 106,-186.5 40,-187 40.5,-6.5 -0.5,-6.5 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="spawnpoints">
+  <object id="60" type="spawn" x="789" y="94"/>
+  <object id="61" type="spawn" x="154" y="60"/>
+  <object id="62" type="playerStart" x="705" y="450"/>
+  <object id="63" type="healthpack" x="819" y="194"/>
  </objectgroup>
 </map>
