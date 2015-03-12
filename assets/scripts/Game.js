@@ -49,7 +49,7 @@ PlasmaAttack.Game.prototype = {
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'spawnpoints');
     
-    this.player = this.game.add.sprite(result.x, result.y, 'player');
+    this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
     this.game.physics.p2.enable(this.player, false);
     this.player.body.setCollisionGroup(this.playerCG);
     this.player.body.collides([this.itemCG, this.oldCG, this.wallsCG]);
@@ -103,7 +103,7 @@ PlasmaAttack.Game.prototype = {
         //Phaser uses top left, Tiled bottom left so we have to adjust
         //also keep in mind that the cup images are a bit smaller than the tile which is 16x16
         //so they might not be placed in the exact position as in Tiled
-        element.y -= map.tileHeight;
+        //element.y -= map.tileHeight;
         result.push(element);
       }      
     });
