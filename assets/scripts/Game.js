@@ -69,8 +69,6 @@ PlasmaAttack.Game.prototype = {
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'spawnpoints');
     this.player = new Player(this.game, result[0].x, result[0].y);
-    this.player.body.setCollisionGroup(playerCG);
-    this.player.body.collides([itemCG, oldCG, wallsCG]);
     
     //the camera will follow the player in the world
     //this.game.camera.follow(this.player);
@@ -103,9 +101,6 @@ PlasmaAttack.Game.prototype = {
     enemy.body.collides([playerCG, wallsCG, allyCG, projCG]);
    */
     enemy = new Enemy(this.game, result[0].x, result[0].y);
-    
-    //move player with cursor keys
-    //this.cursors = this.game.input.keyboard.createCursorKeys();
 
   },
   createItems: function() {
@@ -180,12 +175,13 @@ Player = function(game, x, y){
 	this.health = 100;
 	this.projectiles = [];
 	
-	//this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
     game.physics.p2.enable(this);
+    
+    this.body.setCollisionGroup(playerCG);
+    this.body.collides([itemCG, oldCG, wallsCG]);
     this.body.fixedRotation = true;
     //the camera will follow the player in the world
     game.camera.follow(this);
-    
     game.add.existing(this);
 };
 
@@ -292,9 +288,32 @@ var Enemy = function(game, x, y){
 	game.add.existing(this);
 	
 	this.body.setCollisionGroup(oldCG);
-	this.body.collides(projCG, function(){this.destroy();}, this);
+	this.body.collides([wallsCG]);
+	this.body.collides(projCG, this.changeTeams, this);
+	this.body.collides(playerCG);
 };
 Enemy.prototype = Object.create(Phaser.Sprite.prototype);
 Enemy.prototype.constructor = Enemy;
 
+Enemy.prototype.changeTeams = function(){
+	var blah = new Ally(this.game, this.x, this.y);
+	this.destroy();
+};
 
+var Ally = function(game, x, y){
+	this.resting = false;
+	this.attackDelay = 1000;
+	this.attackedLast = 0;
+	this.interval;
+	this.health = 100;
+	
+	Phaser.Sprite.call(this, game, x, y, 'ally');
+	this.game = game;
+	game.physics.p2.enable(this);
+	game.add.existing(this);
+	
+	this.body.setCollisionGroup(allyCG);
+	this.body.collides(oldCG);
+};
+Ally.prototype = Object.create(Phaser.Sprite.prototype);
+Ally.prototype.constructor = Ally;

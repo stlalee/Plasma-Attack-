@@ -26,7 +26,9 @@ PlasmaAttack.Preload.prototype = {
 	    this.load.image('player', 'assets/images/kenta.png');
 	    this.load.image('bag', 'assets/images/health pack.png');
 	    this.load.image('plasma', 'assets/images/plasma.png');
+	    this.load.image('ally', 'assets/images/circle.png');
   	},
+  	
   	create: function() {
     	this.state.start('Game');
   	}
