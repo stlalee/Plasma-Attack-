@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="65">
+ <tileset firstgid="1" name="rooms" tilewidth="60" tileheight="60">
+  <image source="level 1.png" width="900" height="600"/>
+ </tileset>
+ <layer name="background" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJwNwwc3FgAAAMCPjKzISkK2kqxCRokyMxMyUqREGZWQoiI7VOT3dvfeBQUCgWDPGWKoYYZ73ggjjTLaGC8Ya5wXjTfBRJNM9pIpXjbVK6aZboZXzTTLbHPMNc98C7zmdQu9YZE3LbbEUsss95a3rbDSKu9YbY211nnXe9Z73wYbfeBDm2y2xVbbbPeRHXbaZbc99vrYPp/Y74CDPnXIYUcc9ZljPveF40740klf+dop3zjtjG9956xzzrvgez/40UU/ueSyK3521S9+dc11v/ndH2646U+33HbHXffc98BfHnrksb/9419PPPWfZ/4HCgUsPg==
+  </data>
+ </layer>
+ <objectgroup name="collisions">
+  <object id="24" x="0" y="300" width="149.667" height="8"/>
+  <object id="25" x="532.333" y="531" width="7.66667" height="72.6667"/>
+  <object id="27" x="532.333" y="411.667" width="7" height="34"/>
+  <object id="28" x="535.667" y="411.667" width="68" height="7.66667"/>
+  <object id="29" x="596.333" y="355.667" width="7.33333" height="63.3333"/>
+  <object id="32" x="596.333" y="355.333" width="313" height="8.33333"/>
+  <object id="37" x="596.25" y="0" width="7.5" height="120.25"/>
+  <object id="38" x="596.25" y="202" width="7.25" height="37.5"/>
+  <object id="39" x="596.333" y="232" width="308.333" height="7.66667"/>
+  <object id="41" x="480" y="548" width="46" height="50"/>
+  <object id="42" x="4.66667" y="545.333" width="52" height="51.3333"/>
+  <object id="43" x="308.667" y="135.333" width="52.6667" height="51.3333"/>
+  <object id="44" x="46.6667" y="218.667" width="23.3333" height="44"/>
+  <object id="45" x="298" y="11.3333" width="44" height="24.6667"/>
+  <object id="47" x="668.667" y="11.3333" width="46.6667" height="45.3333"/>
+  <object id="48" x="869.333" y="172.667" width="28.6667" height="40.6667"/>
+  <object id="49" x="612" y="368.667" width="55.3333" height="35.3333"/>
+  <object id="50" x="745.333" y="510" width="32.6667" height="32.6667"/>
+  <object id="64" x="255.5" y="306.5">
+   <polyline points="0,0 48.5,0 47,-179.5 112,-179.5 112,-306.5 105.5,-306 106,-186.5 40,-187 40.5,-6.5 -0.5,-6.5 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="spawnpoints">
+  <object id="60" type="spawn" x="789" y="94"/>
+  <object id="61" type="spawn" x="154" y="60"/>
+  <object id="62" type="playerStart" x="705" y="450"/>
+  <object id="63" type="healthpack" x="819" y="194"/>
+ </objectgroup>
+</map>

@@ -6,7 +6,7 @@ var PlasmaAttack = PlasmaAttack || {};
 var playerSpeed = 100;
 var projectileSpeed = 400;
 var plasmaDamage = 20;
-var healthPackBonus = 50
+var healthPackBonus = 50;
 var space = false;
 
 //collision groups
@@ -35,7 +35,7 @@ PlasmaAttack.Game.prototype = {
   	
     this.map = this.game.add.tilemap('level1');
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
-    this.map.addTilesetImage('rooms', 'gameTiles');
+    this.map.addTilesetImage('rooms', 'level1Tiles');
 	
 	this.game.physics.p2.setBoundsToWorld(true,true,true,true,false);
 	//collision groups
@@ -262,7 +262,7 @@ Plasma.prototype.constructor = Plasma;
 
 Plasma.prototype.update = function(){
 	
-}
+};
 
 Player.prototype.takeHit = function(x){
 	this.health -= x;
