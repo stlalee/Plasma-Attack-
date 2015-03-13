@@ -17,6 +17,7 @@ PlasmaAttack.Game.prototype = {
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage('rooms', 'gameTiles');
 	
+	this.game.physics.p2.setBoundsToWorld(true,true,true,true,false);
 	//collision groups
 	this.playerCG = this.game.physics.p2.createCollisionGroup();
 	this.allyCG = this.game.physics.p2.createCollisionGroup();
@@ -28,9 +29,7 @@ PlasmaAttack.Game.prototype = {
 	this.walls = this.game.physics.p2.convertCollisionObjects(this.map, 'collisions', true);
 	for (var wall in this.walls){
 		this.walls[wall].setCollisionGroup(this.wallsCG);
-		this.walls[wall].collides(this.playerCG);
-		this.walls[wall].collides(this.allyCG);
-		this.walls[wall].collides(this.oldCG);
+		this.walls[wall].collides([this.playerCG, this.allyCG, this.oldCG]);
 	}
 	
     //create layer
