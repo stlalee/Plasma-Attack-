@@ -288,21 +288,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":51,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":-44,
-                 "y":45
-                }, 
-                {
-                 "height":0,
                  "id":64,
                  "name":"",
                  "polyline":[
@@ -343,7 +328,7 @@
                          "y":-6.5
                         }, 
                         {
-                         "x":-0.500000000000028,
+                         "x":-0.5,
                          "y":-6.5
                         }, 
                         {
@@ -370,7 +355,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":10,
+         "height":0,
          "name":"spawnpoints",
          "objects":[
                 {
@@ -436,7 +421,7 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":15,
+         "width":0,
          "x":0,
          "y":0
         }],
