@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="5">
- <tileset firstgid="1" name="marble" tilewidth="60" tileheight="60">
-  <image source="marble.png" width="60" height="60"/>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="14">
+ <tileset firstgid="1" name="white house" tilewidth="60" tileheight="60">
+  <image source="level 4.png" width="900" height="600"/>
  </tileset>
- <tileset firstgid="2" name="r car" tilewidth="60" tileheight="60">
-  <image source="red carpet.png" width="180" height="180"/>
- </tileset>
- <tileset firstgid="11" name="thing" tilewidth="60" tileheight="60">
-  <image source="bench.png" width="240" height="120"/>
- </tileset>
- <layer name="Tile Layer 1" width="15" height="10">
+ <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFo5jKGACzTACX
+   eJwNwwc3FgAAAMCPjKzISkK2kqxCRokyMxMyUqREGZWQoiI7VOT3dvfeBQUCgWDPGWKoYYZ73ggjjTLaGC8Ya5wXjTfBRJNM9pIpXjbVK6aZboZXzTTLbHPMNc98C7zmdQu9YZE3LbbEUsss95a3rbDSKu9YbY211nnXe9Z73wYbfeBDm2y2xVbbbPeRHXbaZbc99vrYPp/Y74CDPnXIYUcc9ZljPveF40740klf+dop3zjtjG9956xzzrvgez/40UU/ueSyK3521S9+dc11v/ndH2646U+33HbHXffc98BfHnrksb/9419PPPWfZ/4HCgUsPg==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="15" height="10">
-  <data encoding="base64" compression="zlib">
-   eJxjYCAfMAExMxmYBYhZgZiNDMw+qpckvRxAzEkG5mKgDAAACFEC0Q==
-  </data>
- </layer>
- <layer name="Tile Layer 3" width="15" height="10">
-  <data encoding="base64" compression="zlib">
-   eJxjYEAAHiDmZRhcgBZu4qZALz/VXMHAIADEglQ0bzABAKMQAG4=
-  </data>
- </layer>
- <objectgroup name="Object Layer 1">
-  <object id="1" x="193" y="12" width="95" height="47"/>
-  <object id="2" x="613" y="132" width="95" height="47"/>
-  <object id="3" x="72" y="253" width="48" height="93"/>
-  <object id="4" x="313" y="361" width="96" height="46"/>
+ <objectgroup name="collisions">
+  <object id="2" x="439.333" y="14">
+   <polyline points="0,0 5.33333,-6.66667 14,-6.66667 21.3333,2 21.3333,12.6667 22,17.3333 17.3333,24 19.3333,26.6667 18,28.6667 18.6667,35.3333 12,38 4,37.3333 3.33333,30.6667 0.666667,25.3333 4,24 -1.33333,19.3333 -1.33333,13.3333 0.666667,10.6667 -0.666667,0.666667"/>
+  </object>
+  <object id="5" x="23.3333" y="50">
+   <polyline points="0,0 11.3333,1.33333 13.3333,-6 16,-10 14,-12.6667 17.3333,-16.6667 18.6667,-22.6667 16.6667,-25.3333 17.3333,-35.3333 8.66667,-43.3333 2.66667,-43.3333 -4.66667,-36.6667 -4.66667,-24 -7.33333,-20 -2.66667,-14.6667 -3.33333,-12 -2,-8 -1.33333,-1.33333"/>
+  </object>
+  <object id="6" x="858.667" y="14.6667">
+   <polyline points="0,0 6.66667,-7.33333 15.3333,-7.33333 22.6667,1.33333 21.3333,10.6667 23.3333,16.6667 16.6667,22.6667 20.6667,24 20,27.3333 18.6667,28.6667 18.6667,34 13.3333,37.3333 6,36.6667 3.33333,29.3333 0.666667,25.3333 4.66667,22.6667 -0.666667,18.6667 -0.666667,12.6667 0.666667,5.33333 0.666667,0"/>
+  </object>
+  <object id="7" x="22" y="589.333">
+   <polyline points="0,0 0,-5.33333 -2.66667,-9.33333 -1.33333,-12.6667 -4,-16 -4,-22.6667 -2,-24.6667 -3.33333,-30.6667 2,-42 11.3333,-42.6667 18,-34 17.3333,-25.3333 19.3333,-18.6667 14.6667,-11.3333 16.6667,-7.33333 14.6667,-6 14.6667,0 8.66667,3.33333 0.666667,0.666667"/>
+  </object>
+  <object id="8" x="438.667" y="555.333">
+   <polyline points="0,0 6,-7.33333 14.6667,-7.33333 22.6667,0.666667 22,10.6667 23.3333,15.3333 18.6667,22 21.3333,26 18,28.6667 18.6667,34.6667 12,37.3333 4,36 3.33333,29.3333 1.33333,24 4,21.3333 -0.666667,18 -1.33333,12 1.33333,9.33333 0.666667,1.33333"/>
+  </object>
+  <object id="9" x="863.333" y="589.333">
+   <polyline points="0,0 5.33333,2 12.6667,0.666667 13.3333,-6 16.6667,-10 13.3333,-12 17.3333,-16 18,-23.3333 17.3333,-28 17.3333,-33.3333 10,-40.6667 2.66667,-42 -5.33333,-34.6667 -3.33333,-24 -6.66667,-18.6667 -4,-15.3333 0,-13.3333 0,-12.6667 -4,-10 -1.33333,-7.33333 -0.666667,-2"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="spawnpoints">
+  <object id="10" x="613.333" y="121.333">
+   <polyline points="0,0 0,22.6667 19.3333,22.6667 18,0 0,0"/>
+  </object>
+  <object id="11" x="556.667" y="256">
+   <polyline points="0,0 20,-0.666667 21.3333,20 0,19.3333 -0.666667,1.33333"/>
+  </object>
+  <object id="12" x="629.333" y="404">
+   <polyline points="0,0 19.3333,-0.666667 20.6667,21.3333 0,20 0.666667,0.666667"/>
+  </object>
+  <object id="13" x="730.667" y="258">
+   <polyline points="0,0 -0.666667,23.3333 22.6667,22.6667 22.6667,0.666667 -0.666667,0.666667"/>
+  </object>
  </objectgroup>
 </map>
