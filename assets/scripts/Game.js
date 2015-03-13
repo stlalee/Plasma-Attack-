@@ -37,7 +37,6 @@ PlasmaAttack.Game.prototype = {
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage('rooms', 'level1Tiles');
 	
-	this.game.physics.p2.setBoundsToWorld(true,true,true,true,false);
 	//collision groups
 	playerCG = this.game.physics.p2.createCollisionGroup();
 	allyCG = this.game.physics.p2.createCollisionGroup();
@@ -47,12 +46,12 @@ PlasmaAttack.Game.prototype = {
 	projCG = this.game.physics.p2.createCollisionGroup();
 	
 	this.game.physics.p2.updateBoundsCollisionGroup();
-	
-	//this.walls = this.game.add.group();
-	this.walls = this.game.physics.p2.convertCollisionObjects(this.map, 'collisions', true);
+	this.game.physics.p2.setBoundsToWorld(true,true,true,true,false); //not working
+
+	this.walls = this.game.physics.p2.convertCollisionObjects(this.map, 'collision', true);
 	for (var wall in this.walls){
 		this.walls[wall].setCollisionGroup(wallsCG);
-		this.walls[wall].collides([playerCG, allyCG, oldCG]);
+		this.walls[wall].collides([playerCG, allyCG, oldCG, projCG]);
 	}
 	
     //create layer
@@ -70,8 +69,6 @@ PlasmaAttack.Game.prototype = {
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'spawnpoints');
     this.player = new Player(this.game, result[0].x, result[0].y);
-    //this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
-    //this.game.physics.p2.enable(this.player, false);
     this.player.body.setCollisionGroup(playerCG);
     this.player.body.collides([itemCG, oldCG, wallsCG]);
     
@@ -100,11 +97,12 @@ PlasmaAttack.Game.prototype = {
     this.enemies.physicsBodyType = Phaser.Physics.P2JS;
     
     result = this.findObjectsByType('spawn', this.map, 'spawnpoints');
-    enemy = this.enemies.create(result[0].x, result[0].y, 'enemy');
+    /*enemy = this.enemies.create(result[0].x, result[0].y, 'enemy');
     enemy.health = 20;
     enemy.body.setCollisionGroup(oldCG);
     enemy.body.collides([playerCG, wallsCG, allyCG, projCG]);
-    
+   */
+    enemy = new Enemy(this.game, result[0].x, result[0].y);
     
     //move player with cursor keys
     //this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -249,16 +247,17 @@ Plasma = function(game, x, y, dir){
 	this.body.velocity.x += vel.x;
 	this.body.velocity.y += vel.y;
 	this.body.setCollisionGroup(projCG);
-	this.body.collides(oldCG, 
-		function(body1, body2) {
-			body2.sprite.damage(plasmaDamage);
-			self.destroy();
-		}
-	);
+	this.body.collides(oldCG, destroyPlasma, this);
+	this.body.collides(wallsCG, destroyPlasma, this);
+
 	game.time.events.add(1750, function(){this.destroy();}, this);
 };
 Plasma.prototype = Object.create(Phaser.Sprite.prototype);
 Plasma.prototype.constructor = Plasma;
+
+function destroyPlasma(body1, body2){
+	body1.sprite.destroy();
+}
 
 Plasma.prototype.update = function(){
 	
@@ -273,3 +272,29 @@ Player.prototype.gainHealth = function(x){
 	this.health += x;
 	//console.log(this.health);
 };
+
+var enemySpeed = 1;
+var enemyEngage = 200;
+var enemyDamageTaken = 1;
+
+var Enemy = function(game, x, y){
+	this.ally = false;
+	this.resting = false;
+	this.attackDelay = 1000; //in milliseconds
+	this.attackedLast = 0;
+	this.interval;
+	this.health = 100;
+	this.currentPath = [];
+	
+	Phaser.Sprite.call(this, game, x, y, 'enemy');
+	this.game = game;
+	game.physics.p2.enable(this);
+	game.add.existing(this);
+	
+	this.body.setCollisionGroup(oldCG);
+	this.body.collides(projCG, function(){this.destroy();}, this);
+};
+Enemy.prototype = Object.create(Phaser.Sprite.prototype);
+Enemy.prototype.constructor = Enemy;
+
+
