@@ -57,23 +57,13 @@ PlasmaAttack.Game.prototype = {
     //create layer
     this.backgroundlayer = this.map.createLayer('background');
 
-    //collision on blockedLayer
-    //this.map.setCollisionBetween(1, 2000, true, 'blockedLayer');
-
     //resizes the game world to match the layer dimensions
     this.backgroundlayer.resizeWorld();
-
-    //this.createItems();
-    //this.createDoors();    
 
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'spawnpoints');
     this.player = new Player(this.game, result[0].x, result[0].y);
-    
-    //the camera will follow the player in the world
-    //this.game.camera.follow(this.player);
-    
-    
+
     //create healthpack
     healthpacks = this.game.add.group();
     healthpacks.enableBody = true;
@@ -95,11 +85,7 @@ PlasmaAttack.Game.prototype = {
     this.enemies.physicsBodyType = Phaser.Physics.P2JS;
     
     result = this.findObjectsByType('spawn', this.map, 'spawnpoints');
-    /*enemy = this.enemies.create(result[0].x, result[0].y, 'enemy');
-    enemy.health = 20;
-    enemy.body.setCollisionGroup(oldCG);
-    enemy.body.collides([playerCG, wallsCG, allyCG, projCG]);
-   */
+
     enemy = new Enemy(this.game, result[0].x, result[0].y);
 
   },
@@ -119,10 +105,6 @@ PlasmaAttack.Game.prototype = {
     var result = new Array();
     map.objects[layer].forEach(function(element){
       if(element.type === type) {
-        //Phaser uses top left, Tiled bottom left so we have to adjust
-        //also keep in mind that the cup images are a bit smaller than the tile which is 16x16
-        //so they might not be placed in the exact position as in Tiled
-        //element.y -= map.tileHeight;
         result.push(element);
       }      
     });
@@ -162,9 +144,6 @@ PlasmaAttack.Game.prototype = {
   },
 };
 
-
-//var projectileSpeed = 14;
-//var projectileLife = 30;
 var costToShoot = 10;
 
 Player = function(game, x, y){
@@ -209,15 +188,6 @@ Player.prototype.update = function(space){
 
 Player.prototype.shootPlasma = function(){
 	if(this.health > costToShoot){
-		/*var temp = new PIXI.Sprite(PIXI.Texture.fromImage("images/plasma.png"));
-		Object.defineProperty(temp, 'direction', {value: this.facing});
-		Object.defineProperty(temp, 'time', {value: projectileLife, writable: true});
-		temp.position.x = this.sp.position.x;
-		temp.position.y = this.sp.position.y;
-		stage.addChild(temp);
-		this.health -= costToShoot;
-		this.projectiles.push(temp);*/
-		
 		this.projectiles.push(new Plasma(this.game, 
 									this.position.x, 
 									this.position.y,
