@@ -24,6 +24,7 @@ var projCG;
 
 var numEnemies;
 var level = 1;
+var skip = false;
 
 PlasmaAttack.Game = function(){};
 
@@ -32,10 +33,15 @@ window.addEventListener('keyup', function(event) {
     	space = true;
     	//console.log("space");
     }
+    if(event.keyCode == 83){
+    	skip = true;
+    }
 }, false);
 
 PlasmaAttack.Game.prototype = {
   init: function(lvl){
+	enemies = [];
+	allies = [];
   	this.levelString = 'level1';
   	this.tileSetString = 'level1Tiles';
   	this.tileString = 'room';
@@ -192,8 +198,8 @@ PlasmaAttack.Game.prototype = {
     	enemies[i].update();
     }
     
-    if(numEnemies == 0){
-    	
+    if(numEnemies == 0 || skip){
+    	skip = false;
     	level += 1;
     	this.state.start('Game',true,false,level);
     }
