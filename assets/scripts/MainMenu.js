@@ -13,8 +13,9 @@ PlasmaAttack.MainMenu.prototype = {
 	create: function(){
 		var background = this.game.add.image(0, 0, 'menuback');
 		
-		var playButton = this.game.add.button(this.game.world.centerX-125, this.game.world.centerY, 'play', playFunc, this);
-		playButton.input.useHandCursor = true;
+		this.playButton = this.game.add.button(this.game.world.centerX-125, this.game.world.centerY, 'play', playFunc, this);
+		this.playButton.input.useHandCursor = true;
+		this.playButton.visible = true;
 		
 		this.instButton = this.game.add.button(this.game.world.centerX-125, this.game.world.centerY+100, 'help', tutFunc, this);
 		this.instButton.input.useHandCursor = true;
@@ -23,7 +24,7 @@ PlasmaAttack.MainMenu.prototype = {
 		this.instructions = this.game.add.image(0,0,'tutorial');
 		this.instructions.visible = false;
 		
-		this.back = this.game.add.button(this.game.world.centerX-81, this.game.world.centerY+100, 'backbutton', tutFunc, this);
+		this.back = this.game.add.button(30, this.game.world.height-75, 'backbutton', tutFunc, this);
 		this.back.input.useHandCursor = true;
 		this.back.visible = false;
 		
@@ -40,5 +41,5 @@ function playFunc(){
 
 function tutFunc(){
 	this.back.visible = this.instructions.visible = !this.instructions.visible;
-	this.instButton.visible = !this.instButton.visible;
+	this.playButton.visible = this.instButton.visible = !this.instButton.visible;
 }
