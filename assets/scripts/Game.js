@@ -3,12 +3,17 @@
  */
 
 var PlasmaAttack = PlasmaAttack || {};
-var playerSpeed = 100;
+var playerSpeed = 200;
 var projectileSpeed = 400;
 var plasmaDamage = 20;
 var healthPackBonus = 50;
 var space = false;
+var thresholdToPlayer = 300;
+var thresholdToEnemy = 200;
 
+var player;
+var enemies = [];
+var allies = [];
 //collision groups
 var playerCG;
 var allyCG;
@@ -46,7 +51,7 @@ PlasmaAttack.Game.prototype = {
 	projCG = this.game.physics.p2.createCollisionGroup();
 	
 	this.game.physics.p2.updateBoundsCollisionGroup();
-	this.game.physics.p2.setBoundsToWorld(true,true,true,true,false); //not working
+	this.game.physics.p2.setBounds(0,0,this.game.world.width,this.game.world.height,true,true,true,true,false); //not working
 
 	this.walls = this.game.physics.p2.convertCollisionObjects(this.map, 'collision', true);
 	for (var wall in this.walls){
@@ -63,31 +68,35 @@ PlasmaAttack.Game.prototype = {
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'spawnpoints');
     this.player = new Player(this.game, result[0].x, result[0].y);
-
-    //create healthpack
+	player = this.player;
+	
+    //create healthpacks
     healthpacks = this.game.add.group();
     healthpacks.enableBody = true;
     healthpacks.physicsBodyType = Phaser.Physics.P2JS;
     
-    result = this.findObjectsByType('healthpack', this.map, 'spawnpoints');
-    pack = healthpacks.create(result[0].x, result[0].y, 'bag');
-    pack.body.setCollisionGroup(itemCG);
     var self = this;
-    pack.body.collides(playerCG, 
-    					function(){
-    						self.player.gainHealth(healthPackBonus);
-    						pack.destroy();
-    					});
+    result = this.findObjectsByType('healthpack', this.map, 'spawnpoints');
+    for(i=0; i<result.length;i++){
+	    pack = healthpacks.create(result[0].x, result[0].y, 'bag');
+    	pack.body.setCollisionGroup(itemCG);
     
-    //create an enemy
-    this.enemies = this.game.add.group();
-    this.enemies.enableBody = true;
-    this.enemies.physicsBodyType = Phaser.Physics.P2JS;
+	    pack.body.collides(playerCG, 
+	    					function(){
+	    						self.player.gainHealth(healthPackBonus);
+	    						pack.destroy();
+	    					});
+    }
+    
+    //create enemies
+    //this.enemies.enableBody = true;
+    //this.enemies.physicsBodyType = Phaser.Physics.P2JS;
     
     result = this.findObjectsByType('spawn', this.map, 'spawnpoints');
-
-    enemy = new Enemy(this.game, result[0].x, result[0].y);
-
+	for(i=0; i<result.length; i++){
+		enemies.push(new Enemy(this.game, result[i].x, result[i].y));
+	}
+	
   },
   createItems: function() {
     //create items
@@ -141,6 +150,11 @@ PlasmaAttack.Game.prototype = {
     
     this.player.update(space);
     space = false;
+    
+    for(i=0;i<enemies.length;i++){
+    	enemies[i].update();
+    }
+    
   },
 };
 
@@ -261,13 +275,36 @@ var Enemy = function(game, x, y){
 	this.body.collides([wallsCG]);
 	this.body.collides(projCG, this.changeTeams, this);
 	this.body.collides(playerCG);
+    this.body.fixedRotation = true;
 };
 Enemy.prototype = Object.create(Phaser.Sprite.prototype);
 Enemy.prototype.constructor = Enemy;
 
 Enemy.prototype.changeTeams = function(){
 	var blah = new Ally(this.game, this.x, this.y);
+	for(i=0;i<enemies.length;i++){
+		if(enemies[i] == this){
+			enemies.splice(i,1);
+			break;
+		}
+	}
 	this.destroy();
+};
+
+Enemy.prototype.update = function(){
+	//ai
+	if(distance(this.position, player.position) < thresholdToPlayer){
+		var deltx = player.position.x - this.position.x;
+		var delty = player.position.y - this.position.y;
+		xdir = deltx / Math.abs(deltx);
+		ydir = delty / Math.abs(delty);
+		
+		this.body.moveDown(ydir*playerSpeed/2);
+		this.body.moveRight(xdir*playerSpeed/2);
+		//this.body.velocity = {x:(xdir * playerSpeed/2), y:(ydir * playerSpeed/2)};
+	} else {
+		this.body.velocity = {x:0,y:0};
+	}
 };
 
 var Ally = function(game, x, y){
@@ -283,7 +320,49 @@ var Ally = function(game, x, y){
 	game.add.existing(this);
 	
 	this.body.setCollisionGroup(allyCG);
+	this.body.collides(wallsCG);
 	this.body.collides(oldCG);
+    this.body.fixedRotation = true;
 };
 Ally.prototype = Object.create(Phaser.Sprite.prototype);
 Ally.prototype.constructor = Ally;
+
+Ally.prototype.update = function(){
+	//ai
+	var distToEnemy = thresholdToEnemy+1;
+	var index = -1;
+	for(i=0;i<enemies.length;i++){
+		dist = distance(this.position, enemies[i].position);
+		if(dist < distToEnemy) {
+			distToEnemy = dist;
+			index = i;
+		}
+	}
+	if(index != -1){
+		var deltx = enemies[index].position.x - this.position.x;
+		var delty = enemies[index].position.y - this.position.y;
+		xdir = deltx / Math.abs(deltx);
+		ydir = delty / Math.abs(delty);
+		
+		this.body.moveDown(ydir*playerSpeed/2);
+		this.body.moveRight(xdir*playerSpeed/2);
+		//this.body.velocity = {x:(xdir * playerSpeed/2), y:(ydir * playerSpeed/2)};
+	} else {
+		if(distance(this.position, player.position) > 150){
+			var deltx = player.position.x - this.position.x;
+			var delty = player.position.y - this.position.y;
+			xdir = deltx / Math.abs(deltx);
+			ydir = delty / Math.abs(delty);
+			
+			this.body.moveDown(ydir*playerSpeed/2);
+			this.body.moveRight(xdir*playerSpeed/2);
+		} else {
+			//chill, brah
+			this.body.velocity = {x:0,y:0};
+		}
+	}
+};
+
+function distance(p1, p2){
+	return Math.sqrt(Math.pow(p1.x - p2.x, 2)+Math.pow(p1.y - p2.y,2));
+}
