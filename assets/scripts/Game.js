@@ -24,6 +24,7 @@ var projCG;
 
 var numEnemies;
 var level = 1;
+var skip = false;
 
 PlasmaAttack.Game = function(){};
 
@@ -31,6 +32,9 @@ window.addEventListener('keyup', function(event) {
 	if(event.keyCode == 32){
     	space = true;
     	//console.log("space");
+    }
+    if(event.keyCode == 83){
+    	skip = true;
     }
 }, false);
 
@@ -192,8 +196,8 @@ PlasmaAttack.Game.prototype = {
     	enemies[i].update();
     }
     
-    if(numEnemies == 0){
-    	
+    if(numEnemies == 0 || skip){
+    	skip = false;
     	level += 1;
     	this.state.start('Game',true,false,level);
     }
