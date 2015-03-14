@@ -20,10 +20,10 @@ PlasmaAttack.cutscene.prototype = {
 			//lvl1 cutscenes
 			this.cut.push(this.game.add.button(0,0,'l1c1', nextFunc, this));
 			this.cut[0].visible = true;
-			this.cut.push(this.game.add.button(0,0,'l1c2', nextFunc, this));
+			/*this.cut.push(this.game.add.button(0,0,'l1c2', nextFunc, this));
 			this.cut[1].visible = false;
 			this.cut.push(this.game.add.button(0,0,'l1c3', playFunc, this));
-			this.cut[2].visible = false;
+			this.cut[2].visible = false;*/
 			
 			this.num = 0;
 		} else if(nextlvl == 2){

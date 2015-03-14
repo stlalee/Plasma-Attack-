@@ -48,7 +48,7 @@ PlasmaAttack.Preload.prototype = {
 	    //cutscenes
 	    this.load.image('l1c1', 'assets/cutscenes/level 1 cut 1.png');
 	    this.load.image('l1c2', 'assets/cutscenes/level 1 cut 2.png');
-	    this.load.image('l1c3', 'assets/cutscenes/level 1 cut 3.png');
+	    this.load.image('l1c3', 'assets/cutscenes/level 1 cut 3 .png');
 	    this.load.image('l2c1', 'assets/cutscenes/level 2 cut 1.png');
 	    this.load.image('l2c2', 'assets/cutscenes/level 2 cut 2.png');
 	    this.load.image('l3c1', 'assets/cutscenes/level 3 cut 1.png');
