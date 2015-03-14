@@ -15,10 +15,12 @@ PlasmaAttack.Preload.prototype = {
 	
 	    this.load.setPreloadSprite(this.preloadBar);
 	    
-	    //this.cacheKey = Phaser.Plugin.Tiled.utils.cacheKey;
-	
+	    //load menu
+	    this.load.image('menuback', 'assets/menu/main menu.png');
+	    this.load.image('play', 'assets/menu/button play.png');
+	    this.load.image('tutorial', 'assets/menu/button instructions');	
+	    
 	    //load game assets
-	    //this.load.tiledmap(cacheKey('level1', 'tiledmap'), 'assets/retirement.json', null, Phaser.Tilemap.TILED_JSON);
 	    this.load.tilemap('level1', 'assets/retirement/retirement.json', null, Phaser.Tilemap.TILED_JSON);
 	    this.load.image('level1Tiles', 'assets/retirement/level 1.png');
 	    
@@ -30,6 +32,6 @@ PlasmaAttack.Preload.prototype = {
   	},
   	
   	create: function() {
-    	this.state.start('Game');
+    	this.state.start('MainMenu');
   	}
 };
