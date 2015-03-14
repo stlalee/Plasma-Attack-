@@ -22,6 +22,9 @@ var oldCG;
 var itemCG;
 var projCG;
 
+var numEnemies;
+//var level;
+
 PlasmaAttack.Game = function(){};
 
 window.addEventListener('keyup', function(event) {
@@ -32,15 +35,45 @@ window.addEventListener('keyup', function(event) {
 }, false);
 
 PlasmaAttack.Game.prototype = {
+  init: function(lvl){
+  	level = lvl;
+  	this.levelString = "level1";
+  	this.tileSetString = "level1Tiles";
+  	this.tileString = "room";
+  	switch(lvl){
+  		case 2:
+  			this.levelString = "level2";
+  			this.tileSetString = "level2Tiles";
+  			numEnemies = 2; 
+  			break;
+  		case 3:
+  			this.levelString = "level3";
+  			this.tileSetString = "level3Tiles";
+  			numEnemies = 2; 
+  			break;
+  		case 4:
+  			this.levelString = "level4";
+  			this.tileSetString = "level4Tiles";
+  			numEnemies = 2; 
+  			break;
+  		default:
+  			this.levelString = "level1";
+  			this.tileSetString = "level1Tiles";
+  			numEnemies = 2; 
+  			
+  			break;
+  	}
+  	
+  },
   create: function() {
   	this.game.physics.startSystem(Phaser.Physics.P2JS);
   	this.cursors = this.game.input.keyboard.createCursorKeys();
   	this.space = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   	this.game.physics.p2.setImpactEvents(true);
   	
-    this.map = this.game.add.tilemap('level1');
+    this.map = this.game.add.tilemap(this.levelString);
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
-    this.map.addTilesetImage('rooms', 'level1Tiles');
+    this.map.addTilesetImage(this.tileString, this.tileSetString);
 	
 	//collision groups
 	playerCG = this.game.physics.p2.createCollisionGroup();
@@ -155,6 +188,11 @@ PlasmaAttack.Game.prototype = {
     	enemies[i].update();
     }
     
+    if(numEnemies == 0){
+    	
+    	level += 1;
+    	this.state.start('Game',true,false,);
+    }
   },
 };
 
@@ -279,6 +317,7 @@ var Enemy = function(game, x, y){
 	this.body.setCollisionGroup(oldCG);
 	this.body.collides([wallsCG]);
 	this.body.collides(projCG, this.changeTeams, this);
+	this.body.collides(allyCG);
 	this.body.collides(playerCG);
     this.body.fixedRotation = true;
 };
@@ -293,6 +332,7 @@ Enemy.prototype.changeTeams = function(){
 			break;
 		}
 	}
+	numEnemies -= 1;
 	this.destroy();
 };
 
