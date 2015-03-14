@@ -245,10 +245,11 @@ Player.prototype.shootPlasma = function(){
 									this.position.y,
 									this.facing));
 		
-		//subtract health
+		/*subtract health
 		this.damage(costToShoot);
 		this.health -= costToShoot;
 		console.log(this.health);
+		*/
 		
 	} else {
 		//game over
