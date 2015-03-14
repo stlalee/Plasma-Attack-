@@ -23,6 +23,7 @@ var itemCG;
 var projCG;
 
 var numEnemies;
+var numLvls = 4;
 var level = 1;
 var skip = false;
 
@@ -201,7 +202,11 @@ PlasmaAttack.Game.prototype = {
     if(numEnemies == 0 || skip){
     	skip = false;
     	level += 1;
-    	this.state.start('Game',true,false,level);
+    	//if(level < 5){
+	    	this.state.start('cutscene',true,false,level);
+	    //} else {
+	    	//this.state.start('cutscene',true,false,);
+	    //}
     }
   },
 };

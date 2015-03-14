@@ -21,6 +21,8 @@ PlasmaAttack.Preload.prototype = {
 	    this.load.image('help', 'assets/menu/button instructions.png');	
 	    this.load.image('tutorial', 'assets/menu/instructions page.png');
 	    this.load.image('backbutton', 'assets/menu/instructions back .png');
+	    this.load.image('yes', 'assets/menu/button yes.png');
+	    this.load.image('no', 'assets/menu/button no.png');
 	    
 	    //load map assets
 	    this.load.tilemap('level1', 'assets/retirement/retirement.json', null, Phaser.Tilemap.TILED_JSON);
@@ -54,7 +56,7 @@ PlasmaAttack.Preload.prototype = {
 	    this.load.image('l3c1', 'assets/cutscenes/level 3 cut 1.png');
 	    this.load.image('l3c2', 'assets/cutscenes/level 3 cut 2.png');
 	    this.load.image('l4c1', 'assets/cutscenes/level 4 cut 1.png');
-	    
+	    this.load.image('gameover', 'assets/menu/game over.png');
   	},
   	
   	create: function() {
