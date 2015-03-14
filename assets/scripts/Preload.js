@@ -31,7 +31,6 @@ PlasmaAttack.Preload.prototype = {
 	    this.load.image('ally', 'assets/images/circle.png');
 	    this.load.audio('playerOw', 'assets/sounds/playerOw.wav');
 	    this.load.audio('deathSound', 'assets/sounds/deathSound.wav');
-	    this.load.audio('deathSoundOpt2', 'assets/sounds/deathSoundOpt2.wav');
 	    this.load.audio('healthPack', 'assets/sounds/healthPack.wav');
 	    this.load.audio('plasmaSplat', 'assets/sounds/plasmaSplat.wav');
 	    
