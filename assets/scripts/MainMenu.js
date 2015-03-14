@@ -36,7 +36,7 @@ PlasmaAttack.MainMenu.prototype = {
 };
 
 function playFunc(){
-	this.state.start('Game');
+	this.state.start('cutscene', true, false, 1);
 }
 
 function tutFunc(){

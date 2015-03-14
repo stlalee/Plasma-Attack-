@@ -14,7 +14,7 @@
         {
          "draworder":"topdown",
          "height":0,
-         "name":"collisions",
+         "name":"collision",
          "objects":[
                 {
                  "height":0,
@@ -762,7 +762,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":613.333,
@@ -798,7 +798,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":556.667,
@@ -834,7 +834,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":629.333,
@@ -870,11 +870,119 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":730.667,
                  "y":258
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":0,
+                         "y":26
+                        }, 
+                        {
+                         "x":18,
+                         "y":26
+                        }, 
+                        {
+                         "x":18,
+                         "y":2
+                        }, 
+                        {
+                         "x":-1,
+                         "y":-2
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"playerStart",
+                 "visible":true,
+                 "width":0,
+                 "x":88,
+                 "y":278
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":0,
+                         "y":22
+                        }, 
+                        {
+                         "x":19,
+                         "y":22
+                        }, 
+                        {
+                         "x":18,
+                         "y":3
+                        }, 
+                        {
+                         "x":3,
+                         "y":0
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"healthpack",
+                 "visible":true,
+                 "width":0,
+                 "x":631,
+                 "y":557
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":0,
+                         "y":18
+                        }, 
+                        {
+                         "x":19,
+                         "y":18
+                        }, 
+                        {
+                         "x":20,
+                         "y":3
+                        }, 
+                        {
+                         "x":1,
+                         "y":1
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"healthpack",
+                 "visible":true,
+                 "width":0,
+                 "x":547,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -894,7 +1002,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/newPlasma\/assets\/white house\/level 4.png",
+         "image":"level 4.png",
          "imageheight":600,
          "imagewidth":900,
          "margin":0,
