@@ -13,11 +13,11 @@ PlasmaAttack.MainMenu.prototype = {
 	create: function(){
 		var background = this.game.add.image(0, 0, 'menuback');
 		
-		this.playButton = this.game.add.button(this.game.world.centerX-125, this.game.world.centerY, 'play', playFunc, this);
+		this.playButton = this.game.add.button(325-125, 225, 'play', playFunc, this);
 		this.playButton.input.useHandCursor = true;
 		this.playButton.visible = true;
 		
-		this.instButton = this.game.add.button(this.game.world.centerX-125, this.game.world.centerY+100, 'help', tutFunc, this);
+		this.instButton = this.game.add.button(325-125, 225+100, 'help', tutFunc, this);
 		this.instButton.input.useHandCursor = true;
 		this.instButton.visible = true;
 		

@@ -62,14 +62,14 @@ PlasmaAttack.Game.prototype = {
   			level = lvl;
   			this.levelString = "level4";
   			this.tileSetString = "level4Tiles";
-  			numEnemies = 2; 
+  			numEnemies = 3; 
   			break;
   		default:
   			level = 1;
 		  	this.levelString = 'level1';
 		  	this.tileSetString = 'level1Tiles';
 		  	this.tileString = 'room';
-  			numEnemies = 2; 
+  			numEnemies = 3; 
   			
   			break;
   	}
@@ -219,7 +219,8 @@ Player = function(game, x, y){
     game.physics.p2.enable(this);
     
     this.body.setCollisionGroup(playerCG);
-    this.body.collides([itemCG, oldCG, wallsCG]);
+    this.body.collides([itemCG, wallsCG]);
+    this.body.collides(oldCG, this.dmg, this);
     this.body.fixedRotation = true;
     //the camera will follow the player in the world
     game.camera.follow(this);
@@ -229,6 +230,9 @@ Player = function(game, x, y){
 Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
+Player.prototype.dmg = function(){
+	this.takeHit(10);
+}
 Player.prototype.update = function(space){
 	if(this.body.velocity.x > 0){
 		this.facing = "right";
@@ -255,11 +259,9 @@ Player.prototype.shootPlasma = function(){
 									this.position.y,
 									this.facing));
 		
-		/*subtract health
-		this.damage(costToShoot);
-		this.health -= costToShoot;
+		//subtract health
+		this.dmg(costToShoot);
 		console.log(this.health);
-		*/
 		
 	} else {
 		//game over
@@ -299,6 +301,9 @@ Plasma.prototype.update = function(){
 
 Player.prototype.takeHit = function(x){
 	this.health -= x;
+	if(this.health < 1){
+		this.game.state.start('MainMenu');
+	}
 	//console.log(this.health);
 };
 
@@ -328,13 +333,19 @@ var Enemy = function(game, x, y){
 	this.body.setCollisionGroup(oldCG);
 	this.body.collides([wallsCG]);
 	this.body.collides(projCG, this.changeTeams, this);
-	this.body.collides(allyCG);
+	this.body.collides(allyCG, this.dmg, this);
 	this.body.collides(playerCG);
     this.body.fixedRotation = true;
 };
 Enemy.prototype = Object.create(Phaser.Sprite.prototype);
 Enemy.prototype.constructor = Enemy;
 
+Enemy.prototype.dmg = function(){
+	this.health -= 10;
+	if(this.health < 1){
+		this.changeTeams();
+	}
+}
 Enemy.prototype.changeTeams = function(){
 	var blah = new Ally(this.game, this.x, this.y);
 	for(i=0;i<enemies.length;i++){
@@ -377,12 +388,24 @@ var Ally = function(game, x, y){
 	
 	this.body.setCollisionGroup(allyCG);
 	this.body.collides(wallsCG);
-	this.body.collides(oldCG);
+	this.body.collides(oldCG, this.dmg, this);
     this.body.fixedRotation = true;
 };
 Ally.prototype = Object.create(Phaser.Sprite.prototype);
 Ally.prototype.constructor = Ally;
 
+Ally.prototype.dmg = function(){
+	this.health -= 10;
+	if(this.health < 1){
+		for(i=0;i<allies.length;i++){
+			if(allies[i] == this){
+				allies.splice(i,1);
+				break;
+			}
+		}
+		this.destroy();
+	}
+}
 Ally.prototype.update = function(){
 	//ai
 	var distToEnemy = thresholdToEnemy+1;
