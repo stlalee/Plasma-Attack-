@@ -18,8 +18,9 @@ PlasmaAttack.Preload.prototype = {
 	    //load menu
 	    this.load.image('menuback', 'assets/menu/main menu.png');
 	    this.load.image('play', 'assets/menu/button play.png');
-	    this.load.image('tutorial', 'assets/menu/button instructions');	
-	    
+	    this.load.image('help', 'assets/menu/button instructions.png');	
+	    this.load.image('tutorial', 'assets/menu/instructions page.png');
+	    this.load.image('backbutton', 'assets/menu/instructions back .png');
 	    //load game assets
 	    this.load.tilemap('level1', 'assets/retirement/retirement.json', null, Phaser.Tilemap.TILED_JSON);
 	    this.load.image('level1Tiles', 'assets/retirement/level 1.png');
