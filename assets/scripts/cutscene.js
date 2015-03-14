@@ -25,6 +25,7 @@ PlasmaAttack.cutscene.prototype = {
 			this.cut.push(this.game.add.button(0,0,'l1c3', playFunc, this));
 			this.cut[2].visible = false;
 			
+			this.num = 0;
 		} else if(nextlvl == 2){
 			
 		} else if(nextlvl == 3){
@@ -44,5 +45,7 @@ function playFunc(){
 }
 
 function nextFunc(){
-	this.cut
+	this.cut[this.num].visible = false;
+	this.num += 1;
+	this.cut[this.num].visible = true;
 }
