@@ -23,7 +23,7 @@ var itemCG;
 var projCG;
 
 var numEnemies;
-var level;
+var level = 1;
 
 PlasmaAttack.Game = function(){};
 
@@ -36,27 +36,30 @@ window.addEventListener('keyup', function(event) {
 
 PlasmaAttack.Game.prototype = {
   init: function(lvl){
-  	level = lvl;
   	this.levelString = 'level1';
   	this.tileSetString = 'level1Tiles';
   	this.tileString = 'room';
   	switch(lvl){
   		case 2:
+  			level = lvl;
   			this.levelString = "level2";
   			this.tileSetString = "level2Tiles";
   			numEnemies = 2; 
   			break;
   		case 3:
+  			level = lvl;
   			this.levelString = "level3";
   			this.tileSetString = "level3Tiles";
   			numEnemies = 2; 
   			break;
   		case 4:
+  			level = lvl;
   			this.levelString = "level4";
   			this.tileSetString = "level4Tiles";
   			numEnemies = 2; 
   			break;
   		default:
+  			level = 1;
 		  	this.levelString = 'level1';
 		  	this.tileSetString = 'level1Tiles';
 		  	this.tileString = 'room';

@@ -834,7 +834,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":340.667,
@@ -870,7 +870,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":709.333,
@@ -906,7 +906,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":765.333,
@@ -942,11 +942,47 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"playerStart",
                  "visible":true,
                  "width":0,
                  "x":107,
                  "y":480
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":3,
+                         "y":26
+                        }, 
+                        {
+                         "x":34,
+                         "y":26
+                        }, 
+                        {
+                         "x":34,
+                         "y":1
+                        }, 
+                        {
+                         "x":2,
+                         "y":0
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"healthpack",
+                 "visible":true,
+                 "width":0,
+                 "x":552,
+                 "y":123
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -955,7 +991,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":14,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":
     {
@@ -970,7 +1006,7 @@
          "imageheight":600,
          "imagewidth":900,
          "margin":0,
-         "name":"beach",
+         "name":"room",
          "properties":
             {
 
