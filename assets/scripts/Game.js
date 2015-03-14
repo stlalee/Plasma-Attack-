@@ -40,6 +40,8 @@ window.addEventListener('keyup', function(event) {
 
 PlasmaAttack.Game.prototype = {
   init: function(lvl){
+	enemies = [];
+	allies = [];
   	this.levelString = 'level1';
   	this.tileSetString = 'level1Tiles';
   	this.tileString = 'room';
