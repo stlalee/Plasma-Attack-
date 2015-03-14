@@ -294,7 +294,7 @@
                 }, 
                 {
                  "height":0,
-                 "id":9,
+                 "id":12,
                  "name":"",
                  "polyline":[
                         {
@@ -302,20 +302,20 @@
                          "y":0
                         }, 
                         {
-                         "x":1,
-                         "y":598
+                         "x":897,
+                         "y":2
                         }, 
                         {
-                         "x":899,
-                         "y":599
+                         "x":897,
+                         "y":-6
                         }, 
                         {
-                         "x":898,
+                         "x":-1,
+                         "y":-8
+                        }, 
+                        {
+                         "x":-1,
                          "y":0
-                        }, 
-                        {
-                         "x":2,
-                         "y":1
                         }],
                  "properties":
                     {
@@ -325,8 +325,116 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":0,
-                 "y":0
+                 "x":1,
+                 "y":2
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-9,
+                         "y":1
+                        }, 
+                        {
+                         "x":-8,
+                         "y":594
+                        }, 
+                        {
+                         "x":0,
+                         "y":596
+                        }, 
+                        {
+                         "x":-2,
+                         "y":-2
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":4,
+                 "y":3
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":6,
+                         "y":-1
+                        }, 
+                        {
+                         "x":6,
+                         "y":592
+                        }, 
+                        {
+                         "x":1,
+                         "y":592
+                        }, 
+                        {
+                         "x":0,
+                         "y":0
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":897,
+                 "y":8
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":889,
+                         "y":-2
+                        }, 
+                        {
+                         "x":889,
+                         "y":6
+                        }, 
+                        {
+                         "x":1,
+                         "y":3
+                        }, 
+                        {
+                         "x":0,
+                         "y":0
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":8,
+                 "y":598
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -370,7 +478,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"playerStart",
                  "visible":true,
                  "width":0,
                  "x":70.6667,
@@ -406,7 +514,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":700,
@@ -442,7 +550,7 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":529.333,
@@ -478,11 +586,47 @@
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"spawn",
                  "visible":true,
                  "width":0,
                  "x":380.667,
                  "y":116
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":6,
+                         "y":20
+                        }, 
+                        {
+                         "x":27,
+                         "y":16
+                        }, 
+                        {
+                         "x":23,
+                         "y":-5
+                        }, 
+                        {
+                         "x":0,
+                         "y":-1
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"healthpack",
+                 "visible":true,
+                 "width":0,
+                 "x":619,
+                 "y":83
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -491,7 +635,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":
     {
@@ -502,11 +646,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"level 3.png",
+         "image":"..\/..\/..\/newPlasma\/assets\/lab\/level 3.png",
          "imageheight":600,
          "imagewidth":900,
          "margin":0,
-         "name":"lab",
+         "name":"room",
          "properties":
             {
 
