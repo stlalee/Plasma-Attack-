@@ -1099,7 +1099,11 @@
          "x":0,
          "y":0
         }],
+<<<<<<< HEAD
  "nextobjectid":22,
+=======
+ "nextobjectid":16,
+>>>>>>> 587f33603e2129e83567cb6500c6969b72230fb0
  "orientation":"orthogonal",
  "properties":
     {
