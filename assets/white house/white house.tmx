@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="16">
- <tileset firstgid="1" name="white house" tilewidth="60" tileheight="60">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="60" tileheight="60" nextobjectid="20">
+ <tileset firstgid="1" name="room" tilewidth="60" tileheight="60">
   <image source="level 4.png" width="900" height="600"/>
  </tileset>
  <layer name="background" width="15" height="10">
@@ -32,17 +32,26 @@
   </object>
  </objectgroup>
  <objectgroup name="spawnpoints">
-  <object id="10" x="613.333" y="121.333">
+  <object id="10" type="spawn" x="613.333" y="121.333">
    <polyline points="0,0 0,22.6667 19.3333,22.6667 18,0 0,0"/>
   </object>
-  <object id="11" x="556.667" y="256">
+  <object id="11" type="spawn" x="556.667" y="256">
    <polyline points="0,0 20,-0.666667 21.3333,20 0,19.3333 -0.666667,1.33333"/>
   </object>
-  <object id="12" x="629.333" y="404">
+  <object id="12" type="spawn" x="629.333" y="404">
    <polyline points="0,0 19.3333,-0.666667 20.6667,21.3333 0,20 0.666667,0.666667"/>
   </object>
-  <object id="13" x="730.667" y="258">
+  <object id="13" type="spawn" x="730.667" y="258">
    <polyline points="0,0 -0.666667,23.3333 22.6667,22.6667 22.6667,0.666667 -0.666667,0.666667"/>
+  </object>
+  <object id="16" type="playerStart" x="88" y="278">
+   <polyline points="0,0 0,26 18,26 18,2 -1,-2"/>
+  </object>
+  <object id="18" type="healthpack" x="631" y="557">
+   <polyline points="0,0 0,22 19,22 18,3 3,0"/>
+  </object>
+  <object id="19" type="healthpack" x="547" y="32">
+   <polyline points="0,0 0,18 19,18 20,3 1,1"/>
   </object>
  </objectgroup>
 </map>
