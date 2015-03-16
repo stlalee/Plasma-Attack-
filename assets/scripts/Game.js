@@ -52,14 +52,14 @@ PlasmaAttack.Game.prototype = {
   			this.levelString = "level2";
   			this.tileSetString = "level2Tiles";
   			this.musicString = "grunge";
-  			numEnemies = 2; 
+  			numEnemies = 3; 
   			break;
   		case 3:
   			level = lvl;
   			this.levelString = "level3";
   			this.tileSetString = "level3Tiles";
   			this.musicString = "grunge";
-  			numEnemies = 2; 
+  			numEnemies = 3; 
   			break;
   		case 4:
   			level = lvl;
@@ -93,7 +93,7 @@ PlasmaAttack.Game.prototype = {
 	//sounds
 	this.game.hurt = this.game.add.audio('playerOw');
 	this.game.deathSound = this.game.add.audio('deathSound');
-	this.game.healthPack = this.game.add.audio('heathPack');
+	this.game.healthPack = this.game.add.audio('healthPack');
 	this.game.plasmaSplat = this.game.add.audio('plasmaSplat');
 	
 	//collision groups
@@ -137,7 +137,7 @@ PlasmaAttack.Game.prototype = {
     
 	    pack.body.collides(playerCG, 
 	    					function(){
-	    						self.healthPack.play();
+	    						self.game.healthPack.play();
 	    						self.player.gainHealth(healthPackBonus);
 	    						pack.destroy();
 	    					});
