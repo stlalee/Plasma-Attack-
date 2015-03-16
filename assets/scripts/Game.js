@@ -92,9 +92,9 @@ PlasmaAttack.Game.prototype = {
 	
 	//sounds
 	this.hurt = this.game.add.audio('playerOw');
-	this.deathSound = this.game.add('deathSound');
-	this.healthPack = this.game.add('heathPack');
-	this.plasmaSplat = this.game.add('plasmaSplat');
+	this.deathSound = this.game.add.audio('deathSound');
+	this.healthPack = this.game.add.audio('heathPack');
+	this.game.plasmaSplat = this.game.add.audio('plasmaSplat');
 	
 	//collision groups
 	playerCG = this.game.physics.p2.createCollisionGroup();
@@ -310,6 +310,7 @@ Plasma.prototype = Object.create(Phaser.Sprite.prototype);
 Plasma.prototype.constructor = Plasma;
 
 function destroyPlasma(body1, body2){
+	game.plasmaSplat.play();
 	body1.sprite.destroy();
 }
 
