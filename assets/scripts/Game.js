@@ -322,7 +322,7 @@ Player.prototype.takeHit = function(x){
 	this.game.hurt.play();
 	this.health -= x;
 	if(this.health < 1){
-		this.deathSound.play();
+		this.game.deathSound.play();
 		this.game.state.start('cutscene', true, false, 5);
 	}
 	//console.log(this.health);
