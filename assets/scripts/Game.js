@@ -51,24 +51,28 @@ PlasmaAttack.Game.prototype = {
   			level = lvl;
   			this.levelString = "level2";
   			this.tileSetString = "level2Tiles";
+  			this.musicString = "grunge";
   			numEnemies = 2; 
   			break;
   		case 3:
   			level = lvl;
   			this.levelString = "level3";
   			this.tileSetString = "level3Tiles";
+  			this.musicString = "grunge";
   			numEnemies = 2; 
   			break;
   		case 4:
   			level = lvl;
   			this.levelString = "level4";
   			this.tileSetString = "level4Tiles";
+  			this.musicString = "grunge";
   			numEnemies = 3; 
   			break;
   		default:
   			level = 1;
 		  	this.levelString = 'level1';
 		  	this.tileSetString = 'level1Tiles';
+  			this.musicString = "grunge";
 		  	this.tileString = 'room';
   			numEnemies = 3; 
   			
@@ -85,6 +89,12 @@ PlasmaAttack.Game.prototype = {
     this.map = this.game.add.tilemap(this.levelString);
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage(this.tileString, this.tileSetString);
+	
+	//sounds
+	this.hurt = this.game.add.audio('playerOw');
+	this.deathSound = this.game.add('deathSound');
+	this.healthPack = this.game.add('heathPack');
+	this.plasmaSplat = this.game.add('plasmaSplat');
 	
 	//collision groups
 	playerCG = this.game.physics.p2.createCollisionGroup();
@@ -127,6 +137,7 @@ PlasmaAttack.Game.prototype = {
     
 	    pack.body.collides(playerCG, 
 	    					function(){
+	    						self.healthPack.play();
 	    						self.player.gainHealth(healthPackBonus);
 	    						pack.destroy();
 	    					});
@@ -237,7 +248,9 @@ Player.prototype.constructor = Player;
 
 Player.prototype.dmg = function(){
 	this.takeHit(10);
-}
+	
+};
+
 Player.prototype.update = function(space){
 	if(this.body.velocity.x > 0){
 		this.facing = "right";
@@ -305,9 +318,11 @@ Plasma.prototype.update = function(){
 };
 
 Player.prototype.takeHit = function(x){
+	this.hurt.play();
 	this.health -= x;
 	if(this.health < 1){
-		this.game.state.start('MainMenu');
+		this.deathSound.play();
+		this.game.state.start('cutscene', true, false, 5);
 	}
 	//console.log(this.health);
 };

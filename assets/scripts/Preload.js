@@ -35,11 +35,11 @@ PlasmaAttack.Preload.prototype = {
 	    this.load.image('level4Tiles', 'assets/white house/level 4.png');
 	    
 	    //load various images
-	    this.load.image('enemy', 'assets/images/oldMan.png');
+	    this.load.image('enemy', 'assets/images/ElderlyMan.png');
 	    this.load.image('player', 'assets/images/kenta.png');
 	    this.load.image('bag', 'assets/images/health pack.png');
 	    this.load.image('plasma', 'assets/images/plasma.png');
-	    this.load.image('ally', 'assets/images/circle.png');
+	    this.load.image('ally', 'assets/images/YouthfulMan.png');
 	    
 	    //load music/sounds
 	    this.load.audio('playerOw', 'assets/sounds/playerOw.wav');
