@@ -74,7 +74,7 @@ PlasmaAttack.Game.prototype = {
 		  	this.tileSetString = 'level1Tiles';
   			this.musicString = "grunge";
 		  	this.tileString = 'room';
-  			numEnemies = 3; 
+  			numEnemies = 2; 
   			
   			break;
   	}
@@ -91,9 +91,9 @@ PlasmaAttack.Game.prototype = {
     this.map.addTilesetImage(this.tileString, this.tileSetString);
 	
 	//sounds
-	this.hurt = this.game.add.audio('playerOw');
-	this.deathSound = this.game.add.audio('deathSound');
-	this.healthPack = this.game.add.audio('heathPack');
+	this.game.hurt = this.game.add.audio('playerOw');
+	this.game.deathSound = this.game.add.audio('deathSound');
+	this.game.healthPack = this.game.add.audio('heathPack');
 	this.game.plasmaSplat = this.game.add.audio('plasmaSplat');
 	
 	//collision groups
@@ -310,7 +310,7 @@ Plasma.prototype = Object.create(Phaser.Sprite.prototype);
 Plasma.prototype.constructor = Plasma;
 
 function destroyPlasma(body1, body2){
-	game.plasmaSplat.play();
+	this.game.plasmaSplat.play();
 	body1.sprite.destroy();
 }
 
@@ -319,7 +319,7 @@ Plasma.prototype.update = function(){
 };
 
 Player.prototype.takeHit = function(x){
-	this.hurt.play();
+	this.game.hurt.play();
 	this.health -= x;
 	if(this.health < 1){
 		this.deathSound.play();
@@ -366,7 +366,8 @@ Enemy.prototype.dmg = function(){
 	if(this.health < 1){
 		this.changeTeams();
 	}
-}
+};
+
 Enemy.prototype.changeTeams = function(){
 	var blah = new Ally(this.game, this.x, this.y);
 	for(i=0;i<enemies.length;i++){
